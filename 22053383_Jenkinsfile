@@ -1,0 +1,69 @@
+pipeline {
+	agent {
+		node {
+			label 'master'
+		}
+	}
+	tools {
+		maven 'maven3'
+	}
+	options {
+		buildDiscarder logRotator(
+			daysToKeepStr: '15',
+			numToKeepStr: '10'
+		)
+	}
+	environment {
+		APP_NAME = "Student_APP"
+		APP_ENV = "DEV"
+	}
+	stages {
+		stage('S1_22053383') {
+			steps {
+				sh """
+				echo "S1_22053383: Environment Preparation Completed"
+				"""
+			}
+		}
+		stage('S2_22053383') {
+			steps {
+				sh "docker run --name S2_22053383_Server -d -p 42000:80 22053383_webimage"
+				sh """
+				echo "S2_22053383: Web Server Creation Completed"
+				"""
+				sh "docker rm -f S2_22053383_Server"
+			}
+		}
+		parallel {
+			stage('S3_22053383') {
+				steps {
+					sh """
+					echo "S3_22053383: API Test Completed"
+					"""
+				}
+			}
+			stage('S4_22053383') {
+				steps {
+					sh """
+					echo "S4_22053383: DAST Security Test Completed"
+					"""
+				}
+			}
+		}
+		stage('S5_22053383') {
+			steps {
+				sh "input('Do you want to release the work?')"
+			}
+		}
+		stage('S6_22053383') {
+			when {
+				Work Release Approved
+			}
+			steps {
+				sh """
+				echo "Work Released - 22053383"
+				"""
+			}
+		}
+	}
+}

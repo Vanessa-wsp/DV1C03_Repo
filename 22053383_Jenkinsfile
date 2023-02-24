@@ -34,7 +34,7 @@ pipeline {
 				sh "docker rm -f S2_22053383_Server"
 			}
 		}
-		stage() {
+		stage('') {
 			parallel {
 				stage('S3_22053383') {
 					steps {

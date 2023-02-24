@@ -57,7 +57,9 @@ pipeline {
 		}
 		stage('S6_22053383') {
 			when {
-				Proceed
+				not {
+					Abort
+				}
 			}
 			steps {
 				sh """

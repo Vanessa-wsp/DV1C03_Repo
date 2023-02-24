@@ -57,7 +57,7 @@ pipeline {
 		}
 		stage('S6_22053383') {
 			when {
-				Work Release Approved
+				Proceed
 			}
 			steps {
 				sh """

@@ -55,7 +55,9 @@ pipeline {
 
 		stage('S5_22053383') {
 			steps {
-				sh "input('Do you want to release the work?')"
+				sh """
+				input('Do you want to release the work?')
+				"""
 			}
 		}
 		stage('S6_22053383') {

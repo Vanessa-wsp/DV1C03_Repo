@@ -59,9 +59,6 @@ pipeline {
 			}
 		}
 		stage('S6_22053383') {
-			when {
-				id: 'Proceed'
-			}
 			steps {
 				sh """
 				echo "Work Released - 22053383"

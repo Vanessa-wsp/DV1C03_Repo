@@ -27,7 +27,7 @@ pipeline {
 		}
 		stage('S2_22053383') {
 			steps {
-				sh "docker run --name S2_22053383_Server -d -p 42000:80 22053383_webimage"
+				sh "docker run --name S2_22053383_Server -d -p 42000 22053383_webimage"
 				sh """
 				echo "S2_22053383: Web Server Creation Completed"
 				"""
